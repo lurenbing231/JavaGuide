@@ -76,6 +76,8 @@ Innodb 支持事务，支持行级锁，更好的恢复性，高并发下性能�
 
 兼容性更好，统一字符集可以避免由于字符集转换产生的乱码，不同的字符集进行比较前需要进行转换会造成索引失效，如果数据库中有存储 emoji 表情的需要，字符集需要采用 utf8mb4 字符集。
 
+参考文章：[MySQL 字符集不一致导致索引失效的一个真实案例](https://blog.csdn.net/horses/article/details/107243447)
+
 ### 3. 所有表和字段都需要添加注释
 
 使用 comment 从句添加表和列的备注，从一开始就进行数据字典的维护
@@ -166,7 +168,7 @@ MySQL 内存临时表不支持 TEXT、BLOB 这样的大数据类型，如果查�
 
 **2、TEXT 或 BLOB 类型只能使用前缀索引**
 
-因为[MySQL](http://mp.weixin.qq.com/s?__biz=MzI4Njc5NjM1NQ==&mid=2247487885&idx=1&sn=65b1bf5f7d4505502620179669a9c2df&chksm=ebd62ea1dca1a7b7bf884bcd9d538d78ba064ee03c09436ca8e57873b1d98a55afd6d7884cfc&scene=21#wechat_redirect) 对索引字段长度是有限制的，所以 TEXT 类型只能使用前缀索引，并且 TEXT 列上是不能有默认值的
+因为[MySQL](https://mp.weixin.qq.com/s?__biz=MzI4Njc5NjM1NQ==&mid=2247487885&idx=1&sn=65b1bf5f7d4505502620179669a9c2df&chksm=ebd62ea1dca1a7b7bf884bcd9d538d78ba064ee03c09436ca8e57873b1d98a55afd6d7884cfc&scene=21#wechat_redirect) 对索引字段长度是有限制的，所以 TEXT 类型只能使用前缀索引，并且 TEXT 列上是不能有默认值的
 
 ### 3. 避免使用 ENUM 类型
 
@@ -264,7 +266,7 @@ Innodb 是按照主键索引的顺序来组织表的
 
 ### 7. 对于频繁的查询优先考虑使用覆盖索引
 
-> 覆盖索引：就是包含了所有查询字段 (where,select,ordery by,group by 包含的字段) 的索引
+> 覆盖索引：就是包含了所有查询字段 (where,select,order by,group by 包含的字段) 的索引
 
 **覆盖索引的好处：**
 
